@@ -1,5 +1,5 @@
 import { NavigationContainer } from '@react-navigation/native'
-import { createDrawerNavigator } from '@react-navigation/drawer'
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { MaterialIcons } from '@expo/vector-icons'
 
 import HomeScreen from './screens/HomeScreen'
@@ -8,45 +8,45 @@ import AboutScreen from './screens/AboutScreen'
 import ProdutoScreen from './screens/ProdutoScreen'
 
 
-const drawer = createDrawerNavigator()
+const Tab = createBottomTabNavigator()
 
-export default function App() {
+export default function AppStackTabs() {
   return (
     <NavigationContainer>
-      <drawer.Navigator initialRouteName="Home">
-        <drawer.Screen name='Home'
+      <Tab.Navigator initialRouteName="Home">
+        <Tab.Screen name='Home'
           component={HomeScreen}
           options={{
             title: 'Inicio',
-            drawerIcon: ({ color, size }) => (
+            tabBarIcon: ({ color, size }) => (
               <MaterialIcons name='home' color={color} size={size} />
             )
           }} />
-        <drawer.Screen name='Details' 
+        <Tab.Screen name='Details' 
         component={DetailsScreen} 
         options={{
           title: 'Detalhes',
-          drawerIcon: ({ color, size }) => (
+          tabBarIcon: ({ color, size }) => (
             <MaterialIcons name='details' color={color} size={size} />
           )
         }} />
-        <drawer.Screen name='About' 
+        <Tab.Screen name='About' 
         component={AboutScreen}
         options={{
           title: 'Sobre',
-          drawerIcon: ({ color, size }) => (
+          tabBarIcon: ({ color, size }) => (
             <MaterialIcons name='adb' color={color} size={size} />
           )
         }} />
-        <drawer.Screen name='Produto'
+        <Tab.Screen name='Produto'
          component={ProdutoScreen}
          options={{
           title: 'Produto',
-          drawerIcon: ({ color, size }) => (
+          tabBarIcon: ({ color, size }) => (
             <MaterialIcons name='production-quantity-limits' color={color} size={size} />
           )
         }} /> 
-      </drawer.Navigator>
+      </Tab.Navigator>
     </NavigationContainer>
   )
 }
